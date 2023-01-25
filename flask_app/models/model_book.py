@@ -36,7 +36,17 @@ class Book:
         return all_books
 
     @classmethod 
-    def create(cls, request_data):
-        query="INSERT"
-        results = connectToMySQL(cls.DB).query_db(query, request_data)
-        return results
+    def get_current_book(cls):
+        query="SELECT * FROM books WHERE books.current = 'yes';"
+        results = connectToMySQL(cls.DB).query_db(query)
+        all_books = []
+        for book in results:
+            all_books.append( cls(book) )
+        return all_books
+    @classmethod 
+    def save(cls, request_data):
+        query="INSERT INTO books (rating, title, tbr, current, finished, user_id) VALUES (%(rating)s, %(title)s), %(tbr)s, %(current)s, %(finished)s, %(user_id)s);"
+        return connectToMySQL(cls.DB).query_db(query, request_data)
+
+    @classmethod
+    def get_tbr_list(cls,)

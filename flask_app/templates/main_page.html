@@ -9,23 +9,30 @@
 </head>
 <body>
     <div class="container">
+        <h1>Hello {{session.user_name}}!</h1>
         <div class="card">
             <div id="box1">
                 <div class="tbr">
+                    <h3>Would you like to view your to be read books?</h3>
                     <button class="button"><a href="/view_tbr/{{session.user_id}}">View TBR</a></button>
-                    <form action="/create_book" method="POST">
+                    <h4>Maybe you would like to add a new book to the list?</h4>
+                    <form action="/create_book" method="post">
+                        <label for="title">Title:</label>
                         <input type="text" name="title">
-                        <button>Submit</button>
+                        <input type="submit" value="Submit" class="button">
                     </form>
                 </div>
             </div>
             <div id="box2">
                 <div class="current">
-
+                    <h3>Would you like to access the book you are currently reading? Click here!</h3>
+                    <button class="button"><a href="/view_current/{{session.user_id}}">Current</a></button>
                 </div>
             </div>
             <div id="box3">
                 <div class="finished">
+                    <h3>You're a super star reader! Take a look at all you've read so far!</h3>
+                    <button class="button"><a href="/view_finished/{{session.user_id}}">Finished</a></button>
 
                 </div>
 

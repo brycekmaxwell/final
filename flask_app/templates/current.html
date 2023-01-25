@@ -7,6 +7,11 @@
     <title>Currently Reading</title>
 </head>
 <body>
-    
+    <h1>Hey {{session.user_id}}!</h1>
+    <h2>This is what you are currently reading:</h2>
+        {% for book in get_current_book%}
+        <h2>{{book.title}}</h2>
+        {%endfor%}
+        
 </body>
 </html>

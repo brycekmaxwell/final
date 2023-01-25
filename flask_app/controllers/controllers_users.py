@@ -15,7 +15,7 @@ def register():
     if not valid_user:
         return redirect("/")
     session["user_id"] = valid_user.id
-    return redirect("/dashboard")
+    return redirect("/")
 
 @app.route("/log_in", methods=["POST"])
 def login():
@@ -27,6 +27,7 @@ def login():
         flash("Invalid Password", "login")
         return redirect("/")
     session["user_id"]=valid_user.id
+    session["user_name"] = valid_user.first_name
     return redirect("/dashboard")
 
 @app.route("/dashboard")

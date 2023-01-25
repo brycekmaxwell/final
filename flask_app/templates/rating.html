@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate</title>
+</head>
+<body>
+    <h1>What would you rate this book on a scale of 1-5: {{book.title}}?</h1>
+    <p>
+        1: That was abismal. I wanted to claw my eyes out.
+    </p>
+    <p>
+        2: 10/10 would not recommend. Happy to be done.
+    </p>
+    <p>
+        3: Not very memorable. But a decent book to pass the time.
+    </p>
+    <p>
+        4: Such a good book! Will do a reread in the future.
+    </p>
+    <p>
+        5: Nothing will every compare. This book is my new identity for the next month.
+    </p>
+    
+    <form action="/give_rating" method="post">
+        <input type="number" name="rating" id="rating" min="1" max="5">
+        <button class="button"><a href="/move_to_finished"></a>Submit this rating.</a></button>
+    </form>
+</body>
+</html>
