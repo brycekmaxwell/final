@@ -7,6 +7,17 @@
     <title>TBR</title>
 </head>
 <body>
-    
+    <h1>Welcome to TBR</h1>
+    <!-- this for loop uses the get all books classmethod, therefore we need an if statement to filter out all the tbr books -->
+    {% for book in all_books%}
+        {% if book.tbr == "yes %}
+            <h1>{{book.title}}</h1>
+        {% endif %}
+    {%endfor%}
+
+    <!-- this for loop uses the get_all_tbr_books classmethod. Thanks to the query in the classmethod we only have books that are tbr -->
+    {% for book in all_tbr_books%}
+        <h1>{{book.title}}</h1>
+{%endfor%}
 </body>
 </html>

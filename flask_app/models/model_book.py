@@ -12,6 +12,7 @@ class Book:
         self.tbr=data["tbr"]
         self.current=data["current"]
         self.finished=data["finished"]
+        self.user_id = data['user_id']
         self.created_at=data["created_at"]
         self.updated_at=data["updated_at"]
         self.posted_by='temp'
@@ -24,3 +25,18 @@ class Book:
         for book in results:
             all_books.append( cls(book) )
         return all_books
+
+    @classmethod 
+    def get_all_tbr_books(cls):
+        query="SELECT * FROM books WHERE books.tbr = 'yes';"
+        results = connectToMySQL(cls.DB).query_db(query)
+        all_books = []
+        for book in results:
+            all_books.append( cls(book) )
+        return all_books
+
+    @classmethod 
+    def create(cls, request_data):
+        query="INSERT"
+        results = connectToMySQL(cls.DB).query_db(query, request_data)
+        return results
