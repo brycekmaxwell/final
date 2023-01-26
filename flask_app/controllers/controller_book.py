@@ -31,6 +31,11 @@ def view_current(user_id):
 def view_finished(user_id):
     return render_template("finished.html", user_id = user_id)
 
+@app.route("/view_rating/<int:user_id>")
+def view_rating(user_id):
+    return render_template("rating.html", user_id = user_id)
+
+
 @app.route("/move_to_finished", methods=["POST"])
 def move_to_finished(user_id):
     if "user_id" not in session:
