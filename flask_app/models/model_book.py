@@ -48,5 +48,5 @@ class Book:
         query="INSERT INTO books (rating, title, tbr, current, finished, user_id) VALUES (%(rating)s, %(title)s), %(tbr)s, %(current)s, %(finished)s, %(user_id)s);"
         return connectToMySQL(cls.DB).query_db(query, request_data)
 
-    @classmethod
-    def get_tbr_list(cls,)
+    # @classmethod
+    # def get_tbr_list(cls,)

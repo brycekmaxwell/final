@@ -14,7 +14,7 @@
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
                 <div>
-                    <h3 class="flash">¡Ruh Roh!</h3>
+                    <h3 class="flash">Something went wrong!</h3>
                         {% for message in messages %}
                             <p>{{message}}</p>
                         {% endfor %}
@@ -51,7 +51,7 @@
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
                 <div>
-                    <h3 class="flash">¡Ruh Roh!</h3>
+                    <h3 class="flash">Something went wrong!</h3>
                         {% for message in messages %}
                             <p>{{message}}</p>
                         {% endfor %}

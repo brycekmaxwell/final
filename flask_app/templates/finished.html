@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>Hey {{session.user_id}}!</h1>
+    <button class="button"><a href="/logout">Log Out</a></button>
     <h2>The ultimate book list!!</h2>
     {% for book in all_tbr_books%}
         <p>{{book.title}}</p>

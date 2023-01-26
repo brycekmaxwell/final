@@ -8,10 +8,12 @@
 </head>
 <body>
     <h1>Hey {{session.user_id}}!</h1>
+    <button class="button"><a href="/logout">Log Out</a></button>
     <h2>This is what you are currently reading:</h2>
         {% for book in get_current_book%}
         <h2>{{book.title}}</h2>
         {%endfor%}
-        
+    <h3>All done with this book? Give it a rating!</h3>
+    <button class="button"><a href="flask_app/templates/rating.html"></a></button>
 </body>
 </html>

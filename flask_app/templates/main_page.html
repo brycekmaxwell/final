@@ -9,7 +9,10 @@
 </head>
 <body>
     <div class="container">
-        <h1>Hello {{session.user_name}}!</h1>
+        <div class="navbar">
+            <h1>Hello {{session.user_name}}!</h1>
+            <button class="button"><a href="/logout">Log Out</a></button>
+        </div>
         <div class="card">
             <div id="box1">
                 <div class="tbr">
@@ -38,6 +41,7 @@
 
             </div>
         </div>
+       
 
     </div>
 </body>

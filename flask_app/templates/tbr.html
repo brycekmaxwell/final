@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>Welcome to TBR {{session.user_id}}</h1>
+    <button class="button"><a href="/logout">Log Out</a></button>
     <!-- this for loop uses the get all books classmethod, therefore we need an if statement to filter out all the tbr books -->
     {% for book in all_books%}
         {% if book.tbr == "yes" %}
