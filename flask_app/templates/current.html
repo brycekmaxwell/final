@@ -11,7 +11,7 @@
     <button class="button"><a href="/logout">Log Out</a></button>
     <button class="button"><a href="/dashboard">Main Page</a></button>
     <h2>This is what you are currently reading:</h2>
-        {% for book in get_current_book%}
+        {% for book in books%}
         <h2>{{book.title}}</h2>
         {%endfor%}
     <h3>All done with this book? Give it a rating!</h3>

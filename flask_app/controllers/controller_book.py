@@ -9,6 +9,10 @@ from flask_app.models import models_users
 def view_tbr(user_id):
     return render_template("tbr.html", user_id = user_id, books = model_book.Book.get_all_tbr_books())
 
+@app.route("/view_current/<int:user_id>")
+def view_current(user_id):
+    return render_template("current.html", user_id = user_id, books=model_book.Book.get_all_current_books())
+
    
 @app.route("/create_book", methods=["POST"])
 def create_book():
@@ -24,9 +28,6 @@ def create_book():
     model_book.Book.save(request_data)
     return redirect("/dashboard")
 
-@app.route("/view_current/<int:user_id>")
-def view_current(user_id):
-    return render_template("current.html", user_id = user_id)
 
 @app.route("/view_finished/<int:user_id>")
 def view_finished(user_id):
@@ -37,30 +38,27 @@ def view_rating(user_id):
     return render_template("rating.html", user_id = user_id)
 
 
-@app.route("/move_to_finished", methods=["POST"])
-def move_to_finished(user_id):
-    finished_data = {
-        "title": 'title',
-        "rating": request.form['rating'],
-        "tbr": "no",
-        "current": "no",
-        "finished": "yes",
-        "user_id": session['user_id']
-    }
-    model_book.Book.update_finished(finished_data)
-    return render_template("finished.html", user_id=user_id)
+# @app.route("/move_to_finished", methods=["POST"])
+# def move_to_finished(user_id):
+#     finished_data = {
+#         "title": 'title',
+#         "rating": request.form['rating'],
+#         "tbr": "no",
+#         "current": "no",
+#         "finished": "yes",
+#         "user_id": session['user_id']
+#     }
+#     model_book.Book.update_finished(finished_data)
+#     return render_template("finished.html", user_id=user_id)
 
 
-@app.route("/move_current")
-def move_to_current():
+@app.route("/move_current/<int:book_id>", methods=["POST"])
+def move_to_current(book_id):
+    print("A")
     current_data = {
-        "title": 'title',
-        "rating": 0,
         "tbr": "no",
         "current": "yes",
-        "finished": "no",
-        "user_id": session['user_id'],
-        # "id": session['id']
+        "book_id": book_id
     }
     model_book.Book.update_current(current_data)
-    return render_template("tbr.html")
+    return redirect(f"/view_tbr/{session['user_id']}")
