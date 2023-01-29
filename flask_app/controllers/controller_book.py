@@ -13,6 +13,10 @@ def view_tbr(user_id):
 def view_current(user_id):
     return render_template("current.html", user_id = user_id, books=model_book.Book.get_all_current_books())
 
+@app.route("/view_finished/<int:user_id>")
+def view_finished(user_id):
+    return render_template("finished.html", user_id = user_id, books = model_book.Book.get_all_finished_books())
+
    
 @app.route("/create_book", methods=["POST"])
 def create_book():
@@ -28,10 +32,6 @@ def create_book():
     model_book.Book.save(request_data)
     return redirect("/dashboard")
 
-
-@app.route("/view_finished/<int:user_id>")
-def view_finished(user_id):
-    return render_template("finished.html", user_id = user_id)
 
 @app.route("/view_rating/<int:user_id>")
 def view_rating(user_id):
@@ -62,3 +62,15 @@ def move_to_current(book_id):
     }
     model_book.Book.update_current(current_data)
     return redirect(f"/view_tbr/{session['user_id']}")
+
+@app.route("/give_rating/<int:book_id>", methods=["POST"])
+def move_to_finished(book_id):
+    print("A")
+    finished_data = {
+        "current": "no",
+        "finished": "yes",
+        "rating": request.form['rating'],
+        "book_id": book_id
+    }
+    model_book.Book.update_finished(finished_data)
+    return redirect(f"/view_finished/{session['user_id']}")
