@@ -43,6 +43,14 @@ class Book:
         for book in results:
             all_books.append( cls(book) )
         return all_books
+    @classmethod 
+    def get_all_finished_books(cls):
+        query="SELECT * FROM books WHERE books.finished = 'yes';"
+        results = connectToMySQL(cls.DB).query_db(query)
+        all_books = []
+        for book in results:
+            all_books.append( cls(book) )
+        return all_books
 
     @classmethod 
     def get_current_book(cls):
@@ -63,10 +71,10 @@ class Book:
         query="UPDATE books SET tbr = %(tbr)s, current = %(current)s WHERE id = %(book_id)s"
         return connectToMySQL(cls.DB).query_db(query, current_data)
 
-    # @classmethod
-    # def update_finished(cls, finished_data):
-    #     query="UPDATE books SET rating = %(rating)s, title = %(title)s, tbr = %(tbr)s, current = %(current)s, finished = %(finished)s, user_id = %(user_id)s WHERE id = %(id)s"
-    #     return connectToMySQL(cls.DB).query_db(query, finished_data)
+    @classmethod
+    def update_finished(cls, finished_data):
+        query="UPDATE books SET rating = %(rating)s, current = %(current)s, finished = %(finished)s WHERE id = %(book_id)s"
+        return connectToMySQL(cls.DB).query_db(query, finished_data)
 
 
     # @classmethod

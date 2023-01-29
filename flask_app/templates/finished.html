@@ -11,8 +11,9 @@
     <button class="button"><a href="/logout">Log Out</a></button>
     <button class="button"><a href="/dashboard">Main Page</a></button>
     <h2>The ultimate book list!!</h2>
-    {% for book in all_tbr_books%}
+    {% for book in books%}
         <p>{{book.title}}</p>
+        <p>{{book.rating}}</p>
     {%endfor%}</p>
 </body>
 </html>
