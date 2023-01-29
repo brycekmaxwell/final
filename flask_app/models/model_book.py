@@ -43,10 +43,21 @@ class Book:
         for book in results:
             all_books.append( cls(book) )
         return all_books
+
     @classmethod 
     def save(cls, request_data):
-        query="INSERT INTO books (rating, title, tbr, current, finished, user_id) VALUES (%(rating)s, %(title)s), %(tbr)s, %(current)s, %(finished)s, %(user_id)s);"
+        query="INSERT INTO books (rating, title, tbr, current, finished, user_id) VALUES (%(rating)s, %(title)s, %(tbr)s, %(current)s, %(finished)s, %(user_id)s);"
         return connectToMySQL(cls.DB).query_db(query, request_data)
+
+    @classmethod
+    def update_current(cls, current_data):
+        query="UPDATE books SET rating = %(rating)s, title = %(title)s, tbr = %(tbr)s, current = %(current)s, finished = %(finished)s, user_id = %(user_id)s WHERE id = %(id)s"
+        return connectToMySQL(cls.DB).query_db(query, current_data)
+    @classmethod
+    def update_finished(cls, finished_data):
+        query="UPDATE books SET rating = %(rating)s, title = %(title)s, tbr = %(tbr)s, current = %(current)s, finished = %(finished)s, user_id = %(user_id)s WHERE id = %(id)s"
+        return connectToMySQL(cls.DB).query_db(query, finished_data)
+
 
     # @classmethod
     # def get_tbr_list(cls,)

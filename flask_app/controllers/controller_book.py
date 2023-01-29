@@ -7,8 +7,9 @@ from flask_app.models import models_users
 
 @app.route("/view_tbr/<int:user_id>")
 def view_tbr(user_id):
-    return render_template("tbr.html", user_id = user_id)
+    return render_template("tbr.html", user_id = user_id, books = model_book.Book.get_all_tbr_books())
 
+   
 @app.route("/create_book", methods=["POST"])
 def create_book():
     print(request.form)
@@ -38,7 +39,28 @@ def view_rating(user_id):
 
 @app.route("/move_to_finished", methods=["POST"])
 def move_to_finished(user_id):
-    if "user_id" not in session:
-        return redirect ('/')
-    model_book.Book.move(request.form)
+    finished_data = {
+        "title": 'title',
+        "rating": request.form['rating'],
+        "tbr": "no",
+        "current": "no",
+        "finished": "yes",
+        "user_id": session['user_id']
+    }
+    model_book.Book.update_finished(finished_data)
     return render_template("finished.html", user_id=user_id)
+
+
+@app.route("/move_current")
+def move_to_current():
+    current_data = {
+        "title": 'title',
+        "rating": 0,
+        "tbr": "no",
+        "current": "yes",
+        "finished": "no",
+        "user_id": session['user_id'],
+        # "id": session['id']
+    }
+    model_book.Book.update_current(current_data)
+    return render_template("tbr.html")

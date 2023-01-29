@@ -7,19 +7,23 @@
     <title>TBR</title>
 </head>
 <body>
-    <h1>Welcome to TBR {{session.user_id}}</h1>
+    <h1>Welcome to TBR {{session.user_name}}</h1>
     <button class="button"><a href="/logout">Log Out</a></button>
     <button class="button"><a href="/dashboard">Main Page</a></button>
     <!-- this for loop uses the get all books classmethod, therefore we need an if statement to filter out all the tbr books -->
-    {% for book in all_books%}
+    <!-- {% for book in all_books%}
         {% if book.tbr == "yes" %}
             <h1>{{book.title}}</h1>
         {% endif %}
-    {%endfor%}
+    {%endfor%} -->
 
     <!-- this for loop uses the get_all_tbr_books classmethod. Thanks to the query in the classmethod we only have books that are tbr -->
-    {% for book in all_tbr_books%}
+    {% for book in books%}
         <h1>{{book.title}}</h1>
+        <!-- <form action="/move_current" method="post">
+            <input type="submit" value="I'm now reading this book." class="button">
+        </form> -->
+        <button class="button"><a href="/move_current">I'm now reading this book.</a></button>
     {%endfor%}
 </body>
 </html>
