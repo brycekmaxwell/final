@@ -6,6 +6,37 @@
     width: 1000px;
     margin: 0 auto;
     display: flex;
+    background-image: url({{ url_for('static', filename='images/book_wall.png') }});
+}
+.flash{
+    color: crimson;
+}
+.form1{
+    flex:1 ;
+    background-color: #fff;
+    border: 2px solid #999;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    overflow: hidden;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    width: 350px;
+    margin: auto;
+}
+.form2{
+    flex:1 ;
+    background-color: #fff;
+    border: 2px solid #999;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    overflow: hidden;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    width: 350px;
+    margin: auto;
+}
+h2,h3, h4{
+    text-align: center;
 }
 .card{
     display: flex;
@@ -17,7 +48,7 @@
     width: 250px;
     height: 350px;
     background-color: white;
-    border: 5px solid gray;
+    border: 5px solid darkcyan;
     margin-right: 50px;
 
 }
@@ -25,24 +56,81 @@
     width: 250px;
     height: 350px;
     background-color: white;
-    border: 5px solid gray;
+    border: 5px solid darkcyan;
 }
 #box3{
     width: 250px;
     height: 350px;
     background-color: white;
-    border: 5px solid gray;
+    border: 5px solid darkcyan;
     margin-left: 50px;
 }
 
-.button{
-    background-color: rgba(60, 70, 79, 0.25);
+.button_nav{
+    background-color: white;
     color: white;
-    border: none;
+    border: 1px solid black;
     padding: 10px 16px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    font-size: 10px;
+    box-shadow: 3px 3px darkcyan;
+    align-items: center;
+    margin: 5px;
+  
+}
+
+.button{
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
     font-size: 10px;
     box-shadow: 3px 3px black;
+    align-items: center;
+    
 }
+.finished_books_list{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-weight: bold;
+
+}
+.finished_book{
+    display: flex;
+    justify-content: space-between;
+    width: 00px;
+    border: 1px solid black;
+}
+
+#nav_container{
+    display: flex;
+    background-color:black;
+    align-items: center;
+    border-top: 5px solid darkcyan;
+    height: 60px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+ }
+ #nav_left{
+     display: flex;
+     margin-left: 110px;
+ }
+ #nav_right{
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     margin-right: 110px;
+ }
+ .hey{
+     color: whitesmoke;
+ }
+ .user_name{
+     color: darkcyan;
+ }
+ #current_img{
+     width: 55px;
+ }

@@ -4,26 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <title>TBR</title>
 </head>
 <body>
-    <h1>Welcome to TBR {{session.user_name}}</h1>
-    <button class="button"><a href="/logout">Log Out</a></button>
-    <button class="button"><a href="/dashboard">Main Page</a></button>
-    <!-- this for loop uses the get all books classmethod, therefore we need an if statement to filter out all the tbr books -->
-    <!-- {% for book in all_books%}
-        {% if book.tbr == "yes" %}
-            <h1>{{book.title}}</h1>
-        {% endif %}
-    {%endfor%} -->
-
+    <div id="nav_container">
+        <div id="nav_left"> 
+            <h1 class="hey">Welcome to TBR </h1>
+            <h1 class="user_name"> {{session.user_name}}!</h1>
+        </div>
+        <div id="nav_right">
+            <button class="button_nav"><a href="/logout">Log Out</a></button>
+            <button class="button_nav"><a href="/dashboard">Main Page</a></button>
+        </div>
+    </div>
     <!-- this for loop uses the get_all_tbr_books classmethod. Thanks to the query in the classmethod we only have books that are tbr -->
     {% for book in books%}
         <h1>{{book.title}}</h1>
         <form action="/move_current/{{book.id}}" method="post">
             <input type="submit" value="I'm now reading this book." class="button">
         </form>
-        <!-- <button class="button"><a href="/move_current">I'm now reading this book.</a></button> -->
     {%endfor%}
 </body>
 </html>

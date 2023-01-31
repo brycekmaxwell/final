@@ -37,8 +37,6 @@ class User:
         new_user_id=connectToMySQL(cls.DB).query_db(query, user)
         print("##################")
         print(new_user_id)
-        new_user = cls.get_by_id({"id":new_user_id})
-        return new_user
 
     @staticmethod
     def validate(user):
@@ -63,36 +61,6 @@ class User:
         if user["password"] != user["confirm"]:
             flash("Passwords don't match", "register")
         return is_valid
-
-    @classmethod
-    def get_by_id(cls, id):
-        query = """
-            SELECT
-                *
-            FROM 
-                users
-            LEFT JOIN books on books.user_id = users.id
-            WHERE
-                users.id = %(id)s;
-        """
-        results = connectToMySQL(cls.DB).query_db(query, id)
-        print(results)
-        user=cls(results[0])
-        # user=[]
-        for row in results:
-            user.books.append(
-                model_book.Book({
-                    'id':row["books.id"],
-                    "title": row["title"],
-                    "rating": row["rating"],
-                    "tbr": row["tbr"],
-                    "current": row["current"],
-                    "finished": row["finished"],
-                    "created_at": row["paintings.created_at"],
-                    "updated_at": row["paintings.updated_at"]
-                })
-            )
-        return user
         
 
     @classmethod 

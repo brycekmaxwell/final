@@ -4,16 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <title>All The Books</title>
 </head>
 <body>
-    <h1>Hey {{session.user_name}}!</h1>
-    <button class="button"><a href="/logout">Log Out</a></button>
-    <button class="button"><a href="/dashboard">Main Page</a></button>
+    <div id="nav_container">
+        <div id="nav_left"> 
+            <h1 class="hey">Hey </h1>
+            <h1 class="user_name"> {{session.user_name}}!</h1>
+        </div>
+        <div id="nav_right">
+            <button class="button_nav"><a href="/logout">Log Out</a></button>
+            <button class="button_nav"><a href="/dashboard">Main Page</a></button>
+        </div>
+    </div>  
     <h2>The ultimate book list!!</h2>
-    {% for book in books%}
-        <p>{{book.title}}</p>
-        <p>{{book.rating}}</p>
-    {%endfor%}</p>
+    <div class="finished_books_list">
+        {% for book in books%}
+            <div class="finished_book">
+                <p>TITLE: {{book.title}}</p> 
+                <p>RATING: {{book.rating}}</p>
+            </div>
+        {%endfor%}
+    </div>      
 </body>
 </html>

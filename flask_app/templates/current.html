@@ -4,16 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <title>Currently Reading</title>
 </head>
 <body>
-    <h1>Hey {{session.user_name}}!</h1>
-    <button class="button"><a href="/logout">Log Out</a></button>
-    <button class="button"><a href="/dashboard">Main Page</a></button>
+    <div id="nav_container">
+        <div id="nav_left"> 
+            <h1 class="hey">Hey </h1>
+            <h1 class="user_name"> {{session.user_name}}!</h1>
+        </div>
+        <div id="nav_right">
+            <button class="button_nav"><a href="/logout">Log Out</a></button>
+            <button class="button_nav"><a href="/dashboard">Main Page</a></button>
+        </div>
+    </div>  
     <h2>This is what you are currently reading:</h2>
         {% for book in books%}
         <h2>{{book.title}}</h2>
         <h3>All done with this book? Give it a rating!</h3>
+        <p>
+            1: That was abismal. I wanted to claw my eyes out.
+        </p>
+        <p>
+            2: 10/10 would not recommend. Happy to be done.
+        </p>
+        <p>
+            3: Not very memorable. But a decent book to pass the time.
+        </p>
+        <p>
+            4: Such a good book! Will do a reread in the future.
+        </p>
+        <p>
+            5: Nothing will every compare. This book is my new identity for the next month.
+        </p>
+        
         <form action="/give_rating/{{book.id}}" method="post">
             <input type="number" name="rating" id="rating" min="1" max="5">
             <button class="button">Submit this rating.</button>

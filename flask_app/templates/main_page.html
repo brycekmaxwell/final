@@ -8,11 +8,16 @@
     <title>Welcome</title>
 </head>
 <body>
-    <div class="container">
-        <div class="navbar">
-            <h1>Hello {{session.user_name}}!</h1>
-            <button class="button"><a href="/logout">Log Out</a></button>
+    <div id="nav_container">
+        <div id="nav_left"> 
+            <h1 class="hey">Hey </h1>
+            <h1 class="user_name"> {{session.user_name}}!</h1>
         </div>
+        <div id="nav_right">
+            <button class="button_nav"><a href="/logout">Log Out</a></button>
+        </div>
+    </div>  
+    <div class="container"> 
         <div class="card">
             <div id="box1">
                 <div class="tbr">
@@ -29,6 +34,7 @@
             <div id="box2">
                 <div class="current">
                     <h3>Would you like to access the book you are currently reading? Click here!</h3>
+                    <img id="current_img" src="{{ url_for('static', filename='images/book.png') }}">
                     <button class="button"><a href="/view_current/{{session.user_id}}">Current</a></button>
                 </div>
             </div>

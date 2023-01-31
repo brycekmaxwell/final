@@ -27,35 +27,54 @@ class Book:
         return all_books
 
     @classmethod 
-    def get_all_tbr_books(cls):
-        query="SELECT * FROM books WHERE books.tbr = 'yes';"
-        results = connectToMySQL(cls.DB).query_db(query)
+    def get_all_tbr_books(cls, user_id):
+        query= """
+            SELECT 
+                *
+            FROM 
+                books
+            WHERE 
+                books.tbr = 'yes'
+                AND
+                user_id = "%(id)s";
+        """
+        results = connectToMySQL(cls.DB).query_db(query, user_id)
+        all_books = []
+        for book in results:
+            all_books.append(cls(book))
+        return all_books
+
+    @classmethod 
+    def get_current_book(cls, user_id):
+        query="""
+                SELECT 
+                    *
+                FROM 
+                    books 
+                WHERE 
+                    books.current = 'yes'
+                AND
+                    user_id = "%(id)s";
+        """
+        results = connectToMySQL(cls.DB).query_db(query, user_id)
         all_books = []
         for book in results:
             all_books.append( cls(book) )
         return all_books
 
     @classmethod 
-    def get_all_current_books(cls):
-        query="SELECT * FROM books WHERE books.current = 'yes';"
-        results = connectToMySQL(cls.DB).query_db(query)
-        all_books = []
-        for book in results:
-            all_books.append( cls(book) )
-        return all_books
-    @classmethod 
-    def get_all_finished_books(cls):
-        query="SELECT * FROM books WHERE books.finished = 'yes';"
-        results = connectToMySQL(cls.DB).query_db(query)
-        all_books = []
-        for book in results:
-            all_books.append( cls(book) )
-        return all_books
-
-    @classmethod 
-    def get_current_book(cls):
-        query="SELECT * FROM books WHERE books.current = 'yes';"
-        results = connectToMySQL(cls.DB).query_db(query)
+    def get_all_finished_books(cls, user_id):
+        query="""
+                SELECT 
+                    *
+                FROM 
+                    books 
+                WHERE 
+                    books.finished = 'yes'
+                AND
+                    user_id = "%(id)s";
+        """
+        results = connectToMySQL(cls.DB).query_db(query, user_id)
         all_books = []
         for book in results:
             all_books.append( cls(book) )
@@ -76,6 +95,3 @@ class Book:
         query="UPDATE books SET rating = %(rating)s, current = %(current)s, finished = %(finished)s WHERE id = %(book_id)s"
         return connectToMySQL(cls.DB).query_db(query, finished_data)
 
-
-    # @classmethod
-    # def get_tbr_list(cls,)

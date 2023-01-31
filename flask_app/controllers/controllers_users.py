@@ -34,7 +34,7 @@ def login():
 def dashboard():
     if "user_id" not in session: 
         return redirect("/logout")
-    return render_template("main_page.html", books = model_book.Book.get_all_books())
+    return render_template("main_page.html")
 
 
 
