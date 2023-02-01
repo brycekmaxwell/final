@@ -19,8 +19,9 @@
         </div>
     </div>
     <!-- this for loop uses the get_all_tbr_books classmethod. Thanks to the query in the classmethod we only have books that are tbr -->
+    <h2>Look at all of these books! Better get to reading! Choose a book to start reading!</h2>
     {% for book in books%}
-        <h1>{{book.title}}</h1>
+        <h3>{{book.title}}</h3>
         <form action="/move_current/{{book.id}}" method="post">
             <input type="submit" value="I'm now reading this book." class="button">
         </form>

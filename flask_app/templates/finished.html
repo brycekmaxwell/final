@@ -22,8 +22,8 @@
     <div class="finished_books_list">
         {% for book in books%}
             <div class="finished_book">
-                <p>TITLE: {{book.title}}</p> 
-                <p>RATING: {{book.rating}}</p>
+                <p class="title">TITLE:</p> <p>{{book.title}}</p>
+                <p class="title">RATING:</p><p>{{book.rating}}</p> 
             </div>
         {%endfor%}
     </div>      

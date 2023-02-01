@@ -22,6 +22,9 @@
     padding-bottom: 20px;
     width: 350px;
     margin: auto;
+    margin-top: 80px;
+    margin-bottom: 20px;
+   
 }
 .form2{
     flex:1 ;
@@ -65,7 +68,10 @@ h2,h3, h4{
     border: 5px solid darkcyan;
     margin-left: 50px;
 }
-
+#current_img{
+    width: 55px;
+    margin-left: 100px;
+}
 .button_nav{
     background-color: white;
     color: white;
@@ -80,6 +86,20 @@ h2,h3, h4{
   
 }
 
+.button_login{
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 10px;
+    box-shadow: 3px 3px black;
+    align-items: center;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 10px;
+}
 .button{
     background-color: white;
     color: black;
@@ -90,20 +110,27 @@ h2,h3, h4{
     font-size: 10px;
     box-shadow: 3px 3px black;
     align-items: center;
-    
+    display: flex;
+    margin: 0 auto;
 }
+
 .finished_books_list{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    font-weight: bold;
-
 }
+
 .finished_book{
     display: flex;
     justify-content: space-between;
-    width: 00px;
+    width: 270px;
     border: 1px solid black;
+    padding: 10px;
+    margin: auto;
+}
+
+.title{
+    font-weight: bold;
+
 }
 
 #nav_container{
@@ -130,7 +157,4 @@ h2,h3, h4{
  }
  .user_name{
      color: darkcyan;
- }
- #current_img{
-     width: 55px;
  }

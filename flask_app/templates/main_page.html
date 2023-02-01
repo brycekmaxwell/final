@@ -22,6 +22,7 @@
             <div id="box1">
                 <div class="tbr">
                     <h3>Would you like to view your to be read books?</h3>
+                    <img id="current_img" src="{{ url_for('static', filename='images/book.png') }}">
                     <button class="button"><a href="/view_tbr/{{session.user_id}}">View TBR</a></button>
                     <h4>Maybe you would like to add a new book to the list?</h4>
                     <form action="/create_book" method="post">
@@ -41,6 +42,7 @@
             <div id="box3">
                 <div class="finished">
                     <h3>You're a super star reader! Take a look at all you've read so far!</h3>
+                    <img id="current_img" src="{{ url_for('static', filename='images/book.png') }}">
                     <button class="button"><a href="/view_finished/{{session.user_id}}">Finished</a></button>
 
                 </div>
