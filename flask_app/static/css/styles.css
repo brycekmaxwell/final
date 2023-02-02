@@ -6,7 +6,6 @@
     width: 1000px;
     margin: 0 auto;
     display: flex;
-    background-image: url({{ url_for('static', filename='images/book_wall.png') }});
 }
 .flash{
     color: crimson;
@@ -41,6 +40,7 @@
 h2,h3, h4{
     text-align: center;
 }
+
 .card{
     display: flex;
     margin: auto;
@@ -50,23 +50,23 @@ h2,h3, h4{
 #box1{
     width: 250px;
     height: 350px;
-    background-color: white;
     border: 5px solid darkcyan;
     margin-right: 50px;
+    color: white;
 
 }
 #box2{
     width: 250px;
     height: 350px;
-    background-color: white;
     border: 5px solid darkcyan;
+    color: white;
 }
 #box3{
     width: 250px;
     height: 350px;
-    background-color: white;
     border: 5px solid darkcyan;
     margin-left: 50px;
+    color: white;
 }
 #current_img{
     width: 55px;
@@ -158,3 +158,7 @@ h2,h3, h4{
  .user_name{
      color: darkcyan;
  }
+
+ #grad {
+    background-image: linear-gradient(to bottom right, black, darkcyan);
+  }
