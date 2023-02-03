@@ -49,6 +49,12 @@ def move_to_current(book_id):
     model_book.Book.update_current(current_data)
     return redirect(f"/view_current/{session['user_id']}")
 
+@app.route("/delete_tbr/<int:book_id>")
+def delete_tbr(book_id):
+    model_book.Book.delete({'id':book_id})
+    return redirect(f"/view_tbr/{session['user_id']}")
+    
+
 @app.route("/give_rating/<int:book_id>", methods=["POST"])
 def move_to_finished(book_id):
     print("A")

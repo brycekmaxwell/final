@@ -95,3 +95,7 @@ class Book:
         query="UPDATE books SET rating = %(rating)s, current = %(current)s, finished = %(finished)s WHERE id = %(book_id)s"
         return connectToMySQL(cls.DB).query_db(query, finished_data)
 
+    @classmethod
+    def delete(cls, book_id):
+        query="DELETE from books WHERE books.id=%(id)s;"
+        return connectToMySQL(cls.DB).query_db(query, book_id)

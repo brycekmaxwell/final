@@ -25,6 +25,7 @@
         <form action="/move_current/{{book.id}}" method="post">
             <input type="submit" value="I'm now reading this book." class="button">
         </form>
+        <button class="button"><a href="/delete_tbr/{{book.id}}">Remove from TBR.</a></button>
     {%endfor%}
 </body>
 </html>
