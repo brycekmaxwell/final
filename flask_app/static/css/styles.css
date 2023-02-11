@@ -113,6 +113,15 @@ h2,h3, h4{
     display: flex;
     margin: 0 auto;
 }
+.tbr_submit1{
+    text-align: center;
+    margin-bottom: 20px;
+    margin-left: 25px;
+}
+.tbr_submit2{
+    text-align: center;
+    margin-bottom: 10px;
+}
 
 .finished_books_list{
     display: flex;
